@@ -1,0 +1,16 @@
+version: '3'
+services:
+  flask:
+    container_name: "flask_container"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    volumes:
+      - .:/app/
+
+  redis:
+    image: redis
+    container_name: redis_container
+    ports:
+      - "6379:6379"
